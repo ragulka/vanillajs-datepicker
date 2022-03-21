@@ -27,6 +27,7 @@ const defaultOptions = {
   showDaysOfWeek: true,
   showOnClick: true,
   showOnFocus: true,
+  showOnEscape: true,
   startView: 0,
   title: '',
   todayBtn: false,

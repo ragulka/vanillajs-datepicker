@@ -84,8 +84,9 @@ export function onKeydown(datepicker, ev) {
     } else {
       if (key === 'Enter') {
         datepicker.update();
-      } else if (key === 'Escape') {
+      } else if (key === 'Escape' && datepicker.config.showOnEscape) {
         picker.show();
+        ev.stopPropagation();
       }
       return;
     }
@@ -94,6 +95,7 @@ export function onKeydown(datepicker, ev) {
       datepicker.exitEditMode({update: true, autohide: datepicker.config.autohide});
     } else if (key === 'Escape') {
       picker.hide();
+      ev.stopPropagation();
     }
     return;
   } else {
@@ -139,6 +141,7 @@ export function onKeydown(datepicker, ev) {
     } else {
       if (key === 'Escape') {
         picker.hide();
+        ev.stopPropagation();
       } else if (
         key === 'Backspace'
         || key === 'Delete'
