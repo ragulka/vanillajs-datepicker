@@ -521,6 +521,7 @@
     showDaysOfWeek: true,
     showOnClick: true,
     showOnFocus: true,
+    showOnEscape: true,
     startView: 0,
     title: '',
     todayBtn: false,
@@ -2089,8 +2090,9 @@
       } else {
         if (key === 'Enter') {
           datepicker.update();
-        } else if (key === 'Escape') {
+        } else if (key === 'Escape' && datepicker.config.showOnEscape) {
           picker.show();
+          ev.stopPropagation();
         }
         return;
       }
@@ -2099,6 +2101,7 @@
         datepicker.exitEditMode({update: true, autohide: datepicker.config.autohide});
       } else if (key === 'Escape') {
         picker.hide();
+        ev.stopPropagation();
       }
       return;
     } else {
@@ -2144,6 +2147,7 @@
       } else {
         if (key === 'Escape') {
           picker.hide();
+          ev.stopPropagation();
         } else if (
           key === 'Backspace'
           || key === 'Delete'
